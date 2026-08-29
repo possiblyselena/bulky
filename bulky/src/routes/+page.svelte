@@ -1,4 +1,12 @@
-<h1>Bulky</h1>
+<script lang="ts">
+    function greet() {
+        alert('Welcome to Svelte');
+    }
+</script>
+
+<button onclick={greet}>Click me!</button>
+
+<h1 class="text-2xl">Bulky</h1>
 <p>Build a hardware projects with 10+ of the same component and get an organizer!</p>
 
 <p>How this works</p>
@@ -25,3 +33,7 @@
 
 <h3>The point is to get rid of your hardware and make space for nicer hardware!</h3>
 
+<style lang="postcss">
+    @reference "tailwindcss"
+
+</style>
