@@ -32,12 +32,3 @@
 
 
 <h3>The point is to get rid of your hardware and make space for nicer hardware!</h3>
-
-<style lang="postcss">
-    @reference "tailwindcss"
-    @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap');
-
-    h1 {
-        font-family: 'Climate Crisis', sans-serif;
-    }
-</style>
