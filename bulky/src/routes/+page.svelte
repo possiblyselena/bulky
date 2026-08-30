@@ -6,7 +6,7 @@
 
 <button onclick={greet}>Click me!</button>
 
-<h1 class="text-2xl">Bulky</h1>
+<h1 class="text-2xl font-climate">Bulky</h1>
 <p>Build a hardware projects with 10+ of the same component and get an organizer!</p>
 
 <p>How this works</p>
@@ -35,5 +35,9 @@
 
 <style lang="postcss">
     @reference "tailwindcss"
+    @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap');
 
+    h1 {
+        font-family: 'Climate Crisis', sans-serif;
+    }
 </style>
