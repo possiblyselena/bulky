@@ -5,6 +5,9 @@ export default {
       fontFamily: {
         climate: ['Climate Crisis', 'sans-serif'],
       },
+      colors: {
+        brat: '#D8DF20',
+      }
     },
   },
   plugins: [],
