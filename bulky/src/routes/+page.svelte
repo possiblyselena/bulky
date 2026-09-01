@@ -1,14 +1,15 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import led from '$lib/assets/led.jpg';
-    import rotaryincoder from '$lib/assets/rotaryincoder.jpg';
-    import transistor from '$lib/assets/transistor.jpg';
-    import button from '$lib/assets/button.jpg';
-    import resistor from '$lib/assets/resistor.jpg';
-    import dcmotor from '$lib/assets/dcmotor.jpg';
+    import led from '$lib/assets/led.png';
+    import rotaryincoder from '$lib/assets/rotaryincoder.png';
+    import transistor from '$lib/assets/transistor.png';
+    import button from '$lib/assets/button.png';
+    import dcmotor from '$lib/assets/dcmotor.png';
+    import accordionitem from '$lib/components/accordionitem.svelte';
 
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    import Accordionitem from '$lib/components/accordionitem.svelte';
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -81,15 +82,12 @@
             y: -100,
         });
     });
-    
-    let element = $state('');
 
     const imageMap: Record<string, string> = {
         led,
         rotaryincoder,
         transistor,
         button,
-        resistor,
         dcmotor,
     };
 
@@ -193,90 +191,87 @@
             });
         }
     }
+
+    
 </script>
 
-<div class=" flex flex-col justify-center items-center w-full h-full">
-    <header class="flex flex-row justify-between items-center w-full h-10 bg-gray-200 text-black p-4">
-        <p class="text-2xl font-bold">Hack Club</p>
-        <p class="text-2xl font-bold">Submit</p>
+<div class="flex flex-col justify-center items-center w-full h-full">
+    <header class="flex flex-row justify-between items-center w-full h-10 text-black py-6 m-3 pr-2 ">
+        <a href="https://hackclub.com/"><img src="https://assets.hackclub.com/flag-orpheus-left-bw.svg" class="w-50 pt-10"/></a>
+        <a href="https://www.youtube.com/" class="text-2xl font-bold border border-black p-3">Submit</a>
     </header>
     <h1 class="text-9xl font-climate py-6 text-center">Bulky</h1>
     <p class="text-2xl text-center bg-brat p-1">Build a hardware project with 10+ of the same component and get an storage organizer!</p>
+    <p class="p-2 text-xl underline">Join <a href="https://hackclub.enterprise.slack.com/archives/C0BURQY9JN4">#bulky</a> to start!</p>
 
     <div class="grid grid-cols-5 w-full h-150 gap-4 p-10 relative">
-        <img src={led} alt='led' class="led w-50 absolute bottom-0 left-10 cursor-pointer" on:click={() => { element = 'led'; confetti({element: 'led'}); }}/>
-        <img src={rotaryincoder} alt='rotary encoder' class="rotaryincoder w-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer" on:click={() => { element = 'rotaryincoder'; confetti({element: 'rotaryincoder'}); }}/>
-        <img src={transistor} alt='transistor' class="transistor w-50 absolute bottom-0 right-10 cursor-pointer" on:click={() => { element = 'transistor'; confetti({element: 'transistor'}); }}/> 
-        <img src={button} alt='button' class="button w-50 absolute bottom-10 left-1/4 cursor-pointer" on:click={() => { element = 'button'; confetti({element: 'button'}); }}/>
-        <img src={resistor} alt='resistor' class="resistor w-50 absolute bottom-5 right-1/4 cursor-pointer" on:click={() => { element = 'resistor'; confetti({element: 'resistor'}); }}/> 
-        <img src={dcmotor} alt='dc motor' class="dcmotor w-50 absolute bottom-10 right-1/4 cursor-pointer" on:click={() => { element = 'dcmotor'; confetti({element: 'dcmotor'}); }}/>
+        <img src={led} alt='led' class="led w-50 absolute bottom-0 left-10 cursor-pointer" on:click={() => { confetti({element: 'led'}); }}/>
+        <img src={rotaryincoder} alt='rotary encoder' class="rotaryincoder w-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer" on:click={() => {confetti({element: 'rotaryincoder'}); }}/>
+        <img src={transistor} alt='transistor' class="transistor w-50 absolute bottom-0 right-10 cursor-pointer" on:click={() => { confetti({element: 'transistor'}); }}/> 
+        <img src={button} alt='button' class="button w-50 absolute bottom-10 left-1/4 cursor-pointer" on:click={() => { confetti({element: 'button'}); }}/>
+        <img src={dcmotor} alt='dc motor' class="dcmotor w-50 absolute bottom-10 right-1/4 cursor-pointer" on:click={() => { confetti({element: 'dcmotor'}); }}/>
     </div>
- 
-    <p class="text-2xl font-bold">{element}</p>
+
 
     <div class="grid grid-cols-2">
         <div>
-            <p class="text-xl font-bold bg-gray-200 p-4 m-4">How this works</p>
-            <ul class="p-4 text-lg">
-                <li>❈ Choose a component you have bulk of to excessively use in your project.</li>
-                <li>❈ Spend time designing and building your project.</li>
-                <li> ❈Get a grant to buy a proper organizer!</li>
+            <p class="text-xl font-bold bg-gray-200 p-4 m-2">How this works</p>
+            <ul class="px-4 text-lg">
+                <li class="p-2">❈ Choose a component you have bulk of to excessively use in your project.</li>
+                <li class="p-2">❈ Track your time designing and building your project.</li>
+                <li class="p-2">❈ Get a grant to buy a proper organizer!</li>
             </ul>
-            <p>Don't have hardware? You can get a grant instead to build your project!</p>
+            <p class="p-2 px-6 text-lg font-bold">Don't have hardware? You can get a grant instead to build your project!</p>
         </div>
         <div>
-            <p class="text-xl font-bold bg-gray-200 p-4 m-4">Submission Guidelines</p>
-            <ul class="p-4 mx-4 text-lg">
-                <li>❈ All progress must be documented with Lapse or Journaling.</li>
-                <li>❈ Any files including schematics, code, and CAD designs must be included in your GitHub Repository.</li>
-                <li> ❈Have a good readme.md file with a BOM of all components used (Really important if you need a grant!)</li>
-                <li></li>
+            <p class="text-xl font-bold bg-gray-200 p-4 m-2">Submission Guidelines</p>
+            <ul class="px-4 text-lg">
+                <li class="p-2">❈ All progress must be documented with <a href="https://lapse.hackclub.com/" class="underline">Lapse</a>.</li>
+                <li class="p-2">❈ Any files including schematics, code, and CAD designs must be included in your GitHub Repository.</li>
+                <li class="p-2">❈ Have a good readme.md file with a BOM of all components used - really important if you need a grant!</li>
             </ul>
-            <p>Submit your project here to get a grant!</p>
         </div>
     </div>
    
 
-    <h3 class="text-2xl font-bold bg-brat p-4 m-4">The point is to get rid of your hardware and make space for nicer hardware!</h3>
+    <h3 class="text-2xl font-bold bg-brat p-4 m-4">The point is to get rid of your bulk hardware and make space for better hardware!</h3>
 
-    <div class="bg-gray-200 p-4">
+    <div class="text-lg bg-gray-200 flex flex-col justify-center items-center p-4 m-4">
          <h2>What can I make?</h2>
-         <h2>Hover the components above for idea!</h2>
+         <h2>I'll be posting ideas in <a class="hover:underline" href="https://hackclub.enterprise.slack.com/archives/C0BURQY9JN4">#bulky</a> and maybe even create bounties...</h2>
     </div>
-   
-    <div class="bg-gray-200 p-4">
-        <h2>Submission Guidelines</h2>
-        <p>Track your design and build hours using Lapse or Journaling.</p>
-        <p>Your git repository should contain all design files and scripts if necessary.</p>
-        <p>Finally, submit here to get your grant!</p>
-    </div>
-    <div>
-        <h2>Frequently Asked Questions</h2>
 
+    <div>
+        <h2 class="grid justify-center items-center text-xl font-bold pt-10">Frequently Asked Questions</h2>
+        <div class="grid grid-cols-2 p-4 m-4 gap-2">
+            <Accordionitem title="What is Bulky?">
+                <p class="text-xl">Bulky is a project to help you organize your hardware components</p>
+            </Accordionitem>
+            <Accordionitem title="What is Hack Club?">
+                <p class="text-xl">Hack Club is a 501(c)(3) nonprofit and network of 100k+ technical high schoolers. We believe you learn best by building, so we’re creating community and providing grants so you can make awesome projects.</p>
+            </Accordionitem>
+            <Accordionitem title="Who can particpate?">
+                <p class="text-xl">Ages 13-18 inclusive can participate in Bulky.</p>
+            </Accordionitem>
+            <Accordionitem title="When is the deadline?">
+                <p class="text-xl">The deadline for both design and build is October 2nd, 11:59 PM EST.</p>
+            </Accordionitem>
+            <Accordionitem title="How do I track my hours?">
+                <p class="text-xl">For both design and build hours, you can use Lapse!</p>
+            </Accordionitem>
+            <Accordionitem title="What storage organizer can I get?">
+                <p class="text-xl">It's dependent on your hours tracked! I recommend getting a <a href="https://www.amazon.com/Akro-Mils-10144-20-Inch-16-Inch-Hardware/dp/B003P2UOCO/ref=sr_1_7?crid=P9MGASZLXFVX&dib=eyJ2IjoiMSJ9.wGfIJ7Npm9R-npky_ZAtdNIkmx91C7IgUo5EvcUWZR_HDUxMliir2ZoRGfxpuor9unTLD8tetWfSgrr1oFpoQ-qfP3Ms5Xq-3BBMQwAerAjchiX3PDTRAlGq1Wf3Tsw8TB8PsUrMAPpMkpq33DKFewV8WYz3gBG9RUGsEUFh--YI8Hw2USEJHodAISTi9EUiKFOwH_C899RuliwZfW3TyfGA3RwbwBwcGf6ZgwMoBbQHGlqTcPg7gV47_4C0nj3al2S2Q0pfOuzT-6ZnnTaLyfkCJS9xKcS63Ij49if_R1w.0sG6UZ7DDvrEyJ8H4dcqe3SsE9XV6adWctBOHqAPkm8&dib_tag=se&keywords=bin%2Borganizer&qid=1788286872&sprefix=bin%2Borganizer%2Caps%2C115&sr=8-7&th=1" class="hover:underline">plastic bin cabinet</a> or the <a href="https://www.amazon.com/Jack-Boss-Transparent-34-Compartments-Accessories/dp/B0CZDJNV19/ref=sr_1_2?crid=3JLRE2JHIU0EZ&dib=eyJ2IjoiMSJ9.2j8a7mkV4onyHodjI_DLTxLRN6XCoq3RdDESGmHvSmo83X5kjKP8eaYOxo8pXFyULTkrziir7SSz1HGY0JMUoV1sthd1R9mfJsdqnongzy0Vae6OpdUpns42rsuRD-N2hzXB1MgEGKsUanSNwSzMFJO5LxPyhtHm1Tnd79FswabUch4vdUpuTNuYv1OOOo2RPVrDxdbu-HnZWHdPOs0ySjG1zR31j5WMMxzVC4sLmTXs8d_KCX20D5fSSOcNTE3r4sQhDOS9WcTVUtinyVIj5DvVRHl_PFCEuT7TXNmQB04.PMEqEX7KQ8mJsjJzYU0hSD7lGAUzzskGyMJ2MA4ydPs&dib_tag=se&keywords=small%2Bbin%2Borganizer%2Bportable&qid=1788287027&sprefix=small%2Bbin%2Borganizer%2Bportabl%2Caps%2C122&sr=8-2&th=1" class="hover:underline">portable tool box</a>.</p>
+            </Accordionitem>
+            <Accordionitem title="I've designed the hardware, but I need a couple of components to finish it. Can I get a grant?">
+                <p class="text-xl">You should have most of the parts for your project, but we can give you a grant to up to 25$ to get the remaining components.</p>
+            </Accordionitem>
+        </div> 
     </div>
     <footer class="flex flex-col justify-center items-center w-full h-full py-6 bg-gray-800 text-white">
         <p>Made with ❤️ by Selena</p>
-        <p>Privacy & Terms</p>
-        <p>Security Bounty</p>
-    </footer>
-     <footer class="flex flex-col justify-center items-center w-full h-full py-6 bg-gray-800 text-white">
-        <p>Made with ❤️ by Selena</p>
-        <p>Privacy & Terms</p>
-        <p>Security Bounty</p>
-    </footer>
-     <footer class="flex flex-col justify-center items-center w-full h-full py-6 bg-gray-800 text-white">
-        <p>Made with ❤️ by Selena</p>
-        <p>Privacy & Terms</p>
-        <p>Security Bounty</p>
-    </footer>
-     <footer class="flex flex-col justify-center items-center w-full h-full py-6 bg-gray-800 text-white">
-        <p>Made with ❤️ by Selena</p>
-        <p>Privacy & Terms</p>
-        <p>Security Bounty</p>
-    </footer>
-     <footer class="flex flex-col justify-center items-center w-full h-full py-6 bg-gray-800 text-white">
-        <p>Made with ❤️ by Selena</p>
-        <p>Privacy & Terms</p>
-        <p>Security Bounty</p>
+        <div class="grid grid-cols-2 gap-4">
+            <a class="text-brat hover:underline" href="https://security.hackclub.com/">Security Bounty</a>
+            <a class="text-brat hover:underline" href="https://hackclub.com/privacy-and-terms">Privacy & Terms</a>
+        </div>
     </footer>
 </div>
