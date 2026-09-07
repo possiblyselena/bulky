@@ -197,7 +197,7 @@
 <div class="flex flex-col justify-center items-center w-full h-full">
     <header class="flex flex-row justify-between items-center w-full h-10 text-black py-6 m-3 pr-2 ">
         <a href="https://hackclub.com/"><img src="https://assets.hackclub.com/flag-orpheus-left-bw.svg" class="w-50 pt-10"/></a>
-        <a href="https://www.youtube.com/" class="text-2xl font-bold border border-black p-3">Submit</a>
+        <a href="https://forms.hackclub.com/bulky-submit" class="text-2xl font-bold border border-black p-3">Submit</a>
     </header>
     <h1 class="text-9xl font-climate py-6 text-center">Bulky</h1>
     <p class="text-2xl text-center bg-brat p-1">Build a hardware project with 10+ of the same component and get an storage organizer!</p>
