@@ -244,7 +244,7 @@
         <h2 class="grid justify-center items-center text-xl font-bold pt-10">Frequently Asked Questions</h2>
         <div class="grid grid-cols-2 p-4 m-4 gap-2">
             <Accordionitem title="What is Bulky?">
-                <p class="text-md">Bulky is a project to help you organize your hardware components</p>
+                <p class="text-md">Bulky is a You Ship, We Ship program where you design a hardware project with excessive amounts of the same component to earn a proper storage organizer!</p>
             </Accordionitem>
             <Accordionitem title="What is Hack Club?">
                 <p class="text-md">Hack Club is a 501(c)(3) nonprofit and network of 100k+ technical high schoolers. We believe you learn best by building, so we’re creating community and providing grants so you can make awesome projects.</p>
