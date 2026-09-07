@@ -269,7 +269,7 @@
     <footer class="flex flex-col justify-center items-center w-full h-full py-6 bg-gray-800 text-white">
         <p>Made with ❤️ by Selena</p>
         <div class="grid grid-cols-2 gap-4">
-            <a class="text-brat hover:underline" href="https://security.hackclub.com/">Security Bounty</a>
+            <a class="text-brat hover:underline" href="https://forms.hackclub.com/bounty">Fufillment Bounty</a>
             <a class="text-brat hover:underline" href="https://hackclub.com/privacy-and-terms">Privacy & Terms</a>
         </div>
     </footer>
